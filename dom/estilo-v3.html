@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Usando VueJS</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <style>
+    .boxes {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .demo {
+      width: 100px;
+      height: 100px;
+      background-color: grey;
+    }
+
+    .c1 {
+      background-color: red;
+    }
+
+    .c2 {
+      background-color: blue;
+    }
+
+    .c3 {
+      background-color: green;
+    }
+
+    .rotate45Deg {
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div class="boxes">
+    <div class="demo" @click="applyC1 = !applyC1" :class="style1"></div>
+    <div class="demo"></div>
+    <div class="demo" :class="[cssClass, 'rotate45Deg']"></div>
+  </div>
+  <hr>
+  <input type="text" v-model="cssClass">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            applyC1: false,
+            cssClass: "c1"
+        },
+        computed: {
+            style1() {
+                return {
+                    c1: this.applyC1,
+                    c2: !this.applyC1,
+                }
+            }
+        },
+        methods: {}
+    });
+</script>
+
+</body>
+</html>

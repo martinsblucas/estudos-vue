@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Usando VueJS</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <button v-on:click="add">Aumentar +</button>
+  <button v-on:click="decrease">Diminuir -</button>
+  <p>Contador: {{ counter }}</p>
+  <p>Resultado: {{ result }}</p>
+</div>
+
+<script>
+  new Vue({
+      el: '#app',
+      data: {
+          title: 'Usando VueJS',
+          counter: 0,
+      },
+      computed: {
+          result() {
+              return this.counter >= 5 ? "Maior ou igual a 5" : "Menor que 5";
+          }
+      },
+      methods: {
+          add() {
+              this.counter++;
+          },
+          decrease() {
+              this.counter--;
+          }
+      }
+  });
+</script>
+
+</body>
+</html>

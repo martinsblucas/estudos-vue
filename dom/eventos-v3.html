@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Usando VueJS</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <p>{{ counter }}</p>
+  <button v-on:click="add()">Somar 1</button>
+  <button v-on:click="add(5, $event)">Somar 5</button>
+  <p v-on:mousemove="refreshXy">
+    Mouse: {{ x }} e {{ y }}
+    <span v-on:mousemove.stop>Parar</span>
+  </p>
+  <p>
+    <a href="https://www.google.com.br" v-on:click.prevent>
+      Google
+    </a>
+  </p>
+</div>
+
+<script>
+  new Vue({
+      el: '#app',
+      data: {
+          counter: 0,
+          x: 0,
+          y: 0
+      },
+      methods: {
+          add (value = 1, event) {
+              this.counter += value;
+          },
+          refreshXy(event) {
+              this.x = event.clientX;
+              this.y = event.clientY;
+          }
+      }
+  });
+</script>
+
+</body>
+</html>
